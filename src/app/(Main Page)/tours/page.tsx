@@ -1,5 +1,6 @@
 import { fetchTours } from '@/utils/FetchData/ToursFetchData'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 async function ToursPage() {
@@ -16,7 +17,12 @@ async function ToursPage() {
             <div className='flex gap-2 justify-center items-center flex-col'>
               <p className='w-full flex flex-col font-semibold'>
                 Tour ID:
-                <span className='font-normal'>{tour.id}</span>
+                <Link
+                  href={`/tours/${tour.id}`}
+                  className='font-normal hover:underline hover:text-blue-500'
+                >
+                  {tour.id}
+                </Link>
               </p>
               <p className='w-full flex flex-col font-semibold'>
                 Tour Name:
