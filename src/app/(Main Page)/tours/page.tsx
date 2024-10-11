@@ -1,4 +1,4 @@
-import { fetchTours } from '@/utils/FetchData/ToursFetchData'
+import { fetchTours } from '@/utils/ToursFetchData'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'

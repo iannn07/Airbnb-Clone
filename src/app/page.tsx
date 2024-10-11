@@ -1,4 +1,4 @@
-import Counter from '@/components/Counter/Counter'
+import Counter from '@/components/Counter'
 import Link from 'next/link'
 import React from 'react'
 
@@ -14,6 +14,13 @@ export default function Home() {
 
         <Link href='/tours' className='text-blue-500 hover:underline text-4xl'>
           Tours
+        </Link>
+
+        <Link
+          href='/create-user'
+          className='text-blue-500 hover:underline text-4xl'
+        >
+          Create User
         </Link>
       </div>
     </>
