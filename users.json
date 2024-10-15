@@ -1,1 +1,14 @@
-[{"id":"01928ef7-627d-7df8-a410-72d3260a3e2e","name":"name","email":"email","password":"5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8"}]
+[
+  {
+    "id": "01928ef7-627d-7df8-a410-72d3260a3e2e",
+    "name": "name",
+    "email": "email",
+    "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8"
+  },
+  {
+    "id": "0192907a-91cf-762c-942c-5c6f039bd59b",
+    "name": "yanto",
+    "email": "yanto@yanti.com",
+    "password": "3c8a306be52e0aa66b6bc1a03a7cd7803cb1f49f42e580b97eb9f06d180ee789"
+  }
+]

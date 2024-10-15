@@ -39,17 +39,17 @@ async function hashPassword(password: string): Promise<string> {
     .join('')
 }
 
-async function saveUser(user: userData) {
+/**
+ * ! EXPORTED FUNCTIONS
+ * @param user
+ * @returns
+ */
+export async function saveUser(user: userData) {
   const users = await fetchUser()
   users.push(user)
   await writeFile('users.json', JSON.stringify(users))
 }
 
-/**
- * ! EXPORTED FUNCTIONS
- * @param formData
- * @returns
- */
 export async function createUser(formData: userData) {
   const validation = validateForm(formData)
 
