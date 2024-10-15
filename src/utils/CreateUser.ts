@@ -12,6 +12,11 @@ interface userData {
   password: string
 }
 
+/**
+ * ! HELPER FUNCTIONS
+ * @param fields
+ * @returns
+ */
 function validateForm(fields: Record<string, any>) {
   for (const [key, value] of Object.entries(fields)) {
     if (!value) {
@@ -34,6 +39,17 @@ async function hashPassword(password: string): Promise<string> {
     .join('')
 }
 
+async function saveUser(user: userData) {
+  const users = await fetchUser()
+  users.push(user)
+  await writeFile('users.json', JSON.stringify(users))
+}
+
+/**
+ * ! EXPORTED FUNCTIONS
+ * @param formData
+ * @returns
+ */
 export async function createUser(formData: userData) {
   const validation = validateForm(formData)
 
@@ -42,6 +58,7 @@ export async function createUser(formData: userData) {
     return {}
   }
 
+  await new Promise((resolve) => setTimeout(resolve, 1500))
   const { name, email, password } = formData
 
   const encryptedPassword = await hashPassword(password)
@@ -68,8 +85,20 @@ export async function fetchUser(): Promise<userData[]> {
   return JSON.parse(response)
 }
 
-async function saveUser(user: userData) {
+export async function deleteUser(formData: FormData) {
+  const id = formData.get('id') as string
   const users = await fetchUser()
-  users.push(user)
-  await writeFile('users.json', JSON.stringify(users))
+  const updatedUsers = users.filter((user) => user.id !== id)
+  await writeFile('users.json', JSON.stringify(updatedUsers))
+  revalidatePath('/create-user')
+}
+
+export async function deleteBindUser(id: string, formData: FormData) {
+  const name = formData.get('name') as string
+  console.log({ name, id })
+
+  const users = await fetchUser()
+  const updatedUsers = users.filter((user) => user.id !== id)
+  await writeFile('users.json', JSON.stringify(updatedUsers))
+  revalidatePath('/create-user')
 }

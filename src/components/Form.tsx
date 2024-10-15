@@ -1,6 +1,7 @@
 'use client'
 
 import { createUser } from '@/utils/CreateUser'
+import { useFormStatus } from 'react-dom'
 
 interface userData {
   name: string
@@ -47,6 +48,20 @@ async function submitForm(formData: FormData) {
   alert(`User created successfully \n ${JSON.stringify(response)}`)
 }
 
+const SubmitButton = () => {
+  const { pending } = useFormStatus()
+
+  return (
+    <button
+      type='submit'
+      className='mt-5 px-3 py-2 rounded bg-blue-500'
+      disabled={pending}
+    >
+      {pending ? 'Creating...' : 'Create'}
+    </button>
+  )
+}
+
 function Form() {
   return (
     <form action={submitForm} className='mb-10'>
@@ -80,12 +95,9 @@ function Form() {
             defaultValue='password'
             className='rounded-md border-white border bg-transparent px-3'
           />
+          <SubmitButton />
         </div>
       </div>
-
-      <button type='submit' className='mt-5 px-3 py-2 rounded bg-blue-500'>
-        Create
-      </button>
     </form>
   )
 }

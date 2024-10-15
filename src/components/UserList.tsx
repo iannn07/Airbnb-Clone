@@ -1,3 +1,6 @@
+import DeleteButtonBind from './DeleteButtonBind'
+import DeleteButtonHiddenInput from './DeleteButtonHiddenInput'
+
 interface userData {
   id?: string
   name: string
@@ -26,6 +29,10 @@ function UserList({ userData }: UserListProps) {
               <p>{user.name}</p>
               <p>{user.email}</p>
               <p>{user.password}</p>
+            </div>
+            <div className='flex gap-2'>
+              <DeleteButtonHiddenInput id={user.id!} />
+              <DeleteButtonBind id={user.id!} />
             </div>
           </div>
         ))
